@@ -8,6 +8,8 @@ import kg.java.todo.core.models.dtos.category.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryFacadeImpl implements CategoryFacade {
     private final CategoryService categoryService;
@@ -34,5 +36,10 @@ public class CategoryFacadeImpl implements CategoryFacade {
     @Override
     public CategoryDto findById(FindByIdCategoryDto model) throws EntityNotFoundException {
         return categoryService.findById(model);
+    }
+
+    @Override
+    public List<CategoryDto> findByUserId(FindByUserId model) throws EntityNotFoundException {
+        return categoryService.findByUserId(model);
     }
 }

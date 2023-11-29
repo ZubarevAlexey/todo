@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/category")
 public class CategoryController {
@@ -60,6 +62,18 @@ public class CategoryController {
         try {
             return ResponseEntity.ok(categoryFacade.findById(model));
         }catch (EntityNotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @PostMapping("username")
+    public ResponseEntity<List<CategoryDto>> findByUserId(@RequestBody FindByUserId model){
+        try {
+            return ResponseEntity.ok(categoryFacade.findByUserId(model));
+        }
+        catch (EntityNotFoundException e){
             return ResponseEntity.notFound().build();
         }
         catch (Exception e){
