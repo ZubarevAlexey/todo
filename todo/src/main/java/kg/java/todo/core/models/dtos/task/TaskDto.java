@@ -17,6 +17,6 @@ public class TaskDto {
     private String name;
     private String status;
     private CategoryDto category;
-    private PriorityDto priorityDto;
+    private PriorityDto priority;
     private UserDto user;
 }
