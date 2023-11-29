@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.scheduling.config.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,10 @@ public class UserEntity {
     private String phoneNumber;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<CategoryEntity> categories = new ArrayList<>();
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<PriorityEntity> priorities = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    private List<TaskEntity> tasks = new ArrayList<>();
 }
