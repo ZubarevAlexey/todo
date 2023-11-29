@@ -11,6 +11,8 @@ import kg.java.todo.data.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class PriorityServiceImpl implements PriorityService {
@@ -61,5 +63,11 @@ public class PriorityServiceImpl implements PriorityService {
     public PriorityDto findById(FindByIdPriorityDto model) throws EntityNotFoundException {
         var priority = priorityRepository.findById(model.getId()).orElseThrow(EntityNotFoundException::new);
         return priorityMapper.toDomain(priority);
+    }
+
+    @Override
+    public List<PriorityDto> findByUserName(FindPriorityByUserNameDto model) {
+        var entities = priorityRepository.findPriorityEntitiesByUserName(model.getUserName());
+        return entities.stream().map(priorityMapper::toDomain).toList();
     }
 }

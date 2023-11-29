@@ -13,5 +13,6 @@ public interface PriorityService {
     PriorityDto update(UpdatePriorityDto model) throws EntityNotFoundException;
     HttpStatus delete(DeletePriorityDto model) throws EntityNotFoundException;
     PriorityDto findById(FindByIdPriorityDto model) throws EntityNotFoundException;
+    List<PriorityDto> findByUserName(FindPriorityByUserNameDto model);
 
 }

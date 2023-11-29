@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/priority")
 public class PriorityController {
@@ -63,6 +65,15 @@ public class PriorityController {
         }
         catch (Exception e){
             return ResponseEntity.badRequest().build();
+        }
+    }
+    @PostMapping("username")
+    public ResponseEntity<List<PriorityDto>> findByUserName(@RequestBody FindPriorityByUserNameDto model) {
+        try {
+            return ResponseEntity.ok(priorityFacade.findByUserName(model));
+        }
+        catch (Exception e){
+            return ResponseEntity.notFound().build();
         }
     }
 

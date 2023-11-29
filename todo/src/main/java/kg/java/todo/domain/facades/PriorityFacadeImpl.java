@@ -8,6 +8,8 @@ import kg.java.todo.core.models.dtos.priority.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PriorityFacadeImpl implements PriorityFacade {
     private final PriorityService priorityService;
@@ -34,5 +36,10 @@ public class PriorityFacadeImpl implements PriorityFacade {
     @Override
     public PriorityDto findById(FindByIdPriorityDto model) throws EntityNotFoundException {
         return priorityService.findById(model);
+    }
+
+    @Override
+    public List<PriorityDto> findByUserName(FindPriorityByUserNameDto model) {
+        return priorityService.findByUserName(model);
     }
 }
