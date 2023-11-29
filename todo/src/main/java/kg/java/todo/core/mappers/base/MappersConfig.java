@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MappersConfig {
     @Bean
-    public UserMapper buildUserMapper() {
-        return new UserMapper();
+    public UserMapper buildUserMapper(CategoryMapper categoryMapper) {
+        return new UserMapper(categoryMapper);
     }
 
     @Bean

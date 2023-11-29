@@ -53,6 +53,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findById(FindByIdUserDto model) throws EntityNotFoundException {
         var user = userRepository.findById(model.getId()).orElseThrow(EntityNotFoundException::new);
-        return userMapper.toDomain(user);
+        return userMapper.toDomainCat(user);
     }
 }

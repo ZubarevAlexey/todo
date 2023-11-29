@@ -28,7 +28,6 @@ public class UserEntity {
     private String lastName;
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
     private List<CategoryEntity> categories = new ArrayList<>();
 }
