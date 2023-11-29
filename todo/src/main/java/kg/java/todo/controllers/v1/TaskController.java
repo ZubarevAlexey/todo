@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequestMapping("/api/v1/task")
 @RestController
 public class TaskController {
@@ -59,6 +61,18 @@ public class TaskController {
     public ResponseEntity<TaskDto> add(@RequestBody FindByIdTaskDto model) {
         try {
             return ResponseEntity.ok(taskFacade.findById(model));
+        }
+        catch (EntityNotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @PostMapping("/username")
+    public ResponseEntity<List<TaskDto>> findTasksByUserName(@RequestBody FindTaskByUserNameDto model) {
+        try {
+            return ResponseEntity.ok(taskFacade.findTasksByUSerName(model));
         }
         catch (EntityNotFoundException e){
             return ResponseEntity.notFound().build();

@@ -8,6 +8,8 @@ import kg.java.todo.core.models.dtos.task.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskFacadeImpl implements TaskFacade {
     private final TaskService taskService;
@@ -34,5 +36,10 @@ public class TaskFacadeImpl implements TaskFacade {
     @Override
     public TaskDto findById(FindByIdTaskDto model) throws EntityNotFoundException {
         return taskService.findById(model);
+    }
+
+    @Override
+    public List<TaskDto> findTasksByUSerName(FindTaskByUserNameDto model) throws EntityNotFoundException {
+        return taskService.findTasksByUSerName(model);
     }
 }

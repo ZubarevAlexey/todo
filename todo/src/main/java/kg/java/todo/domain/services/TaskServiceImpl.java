@@ -13,6 +13,8 @@ import kg.java.todo.data.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class TaskServiceImpl implements TaskService {
@@ -75,5 +77,11 @@ public class TaskServiceImpl implements TaskService {
     public TaskDto findById(FindByIdTaskDto model) throws EntityNotFoundException {
         var task = taskRepository.findById(model.getId()).orElseThrow(EntityNotFoundException::new);
         return taskMapper.toDomain(task);
+    }
+
+    @Override
+    public List<TaskDto> findTasksByUSerName(FindTaskByUserNameDto model) throws EntityNotFoundException {
+        var entities = taskRepository.findTasksByUserName(model.getUserName());
+        return entities.stream().map(taskMapper::toDomain).toList();
     }
 }

@@ -13,5 +13,6 @@ public interface TaskService {
     TaskDto update(UpdateTaskDto model) throws EntityNotFoundException;
     HttpStatus delete(DeleteTaskDto model) throws EntityNotFoundException;
     TaskDto findById(FindByIdTaskDto model) throws EntityNotFoundException;
+    List<TaskDto> findTasksByUSerName(FindTaskByUserNameDto model) throws EntityNotFoundException;
 
 }
