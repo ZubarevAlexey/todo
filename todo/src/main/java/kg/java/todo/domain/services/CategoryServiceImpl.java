@@ -11,6 +11,8 @@ import kg.java.todo.data.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
@@ -60,5 +62,13 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDto findById(FindByIdCategoryDto model) throws EntityNotFoundException {
         var category = categoryRepository.findById(model.getId()).orElseThrow(EntityNotFoundException::new);
         return categoryMapper.toDomain(category);
+    }
+
+    @Override
+    public List<CategoryDto> findByUserId(FindByUserId model) throws EntityNotFoundException {
+        var categories = categoryRepository.findCategories(model.getUserId());
+        return categories.stream()
+                .map(categoryMapper::toDomain)
+                .toList();
     }
 }
