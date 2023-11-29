@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MappersConfig {
     @Bean
-    public UserMapper buildUserMapper(CategoryMapper categoryMapper) {
-        return new UserMapper(categoryMapper);
+    public UserMapper buildUserMapper(CategoryMapper categoryMapper,PriorityMapper priorityMapper) {
+        return new UserMapper(categoryMapper,priorityMapper);
     }
 
     @Bean

@@ -9,8 +9,11 @@ import java.util.stream.Collectors;
 
 public class UserMapper {
     private CategoryMapper categoryMapper;
-    public UserMapper(CategoryMapper categoryMapper) {
+    private PriorityMapper priorityMapper;
+
+    public UserMapper(CategoryMapper categoryMapper, PriorityMapper priorityMapper) {
         this.categoryMapper = categoryMapper;
+        this.priorityMapper = priorityMapper;
     }
 
     public UserMapper() {
@@ -28,12 +31,16 @@ public class UserMapper {
         var categories = model.getCategories().stream()
                 .map(categoryMapper::toDomain)
                 .toList();
+        var priorities = model.getPriorities().stream()
+                .map(priorityMapper::toDomain)
+                .toList();
         return UserDto.builder()
                 .id(model.getId())
                 .firstName(model.getFirstName())
                 .lastName(model.getLastName())
                 .phoneNumber(model.getPhoneNumber())
                 .categories(categories)
+                .priorities(priorities)
                 .build();
     }
     public UserEntity fromDomain(CreateUserDto model){

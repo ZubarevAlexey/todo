@@ -1,6 +1,7 @@
 package kg.java.todo.core.models.dtos.user;
 
 import kg.java.todo.core.models.dtos.category.CategoryDto;
+import kg.java.todo.core.models.dtos.priority.PriorityDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class UserDto {
     private String lastName;
     private String phoneNumber;
     List<CategoryDto> categories;
+    List<PriorityDto> priorities;
 
 
 }
