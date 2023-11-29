@@ -5,7 +5,7 @@ import kg.java.todo.core.contracts.services.UserService;
 import kg.java.todo.core.exceptions.EntityDuplicateException;
 import kg.java.todo.core.exceptions.EntityNotFoundException;
 import kg.java.todo.core.mappers.UserMapper;
-import kg.java.todo.core.models.dtos.*;
+import kg.java.todo.core.models.dtos.user.*;
 import kg.java.todo.data.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -53,6 +53,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findById(FindByIdUserDto model) throws EntityNotFoundException {
         var user = userRepository.findById(model.getId()).orElseThrow(EntityNotFoundException::new);
-        return userMapper.toDomain(user);
+        return userMapper.toDomainCat(user);
     }
 }

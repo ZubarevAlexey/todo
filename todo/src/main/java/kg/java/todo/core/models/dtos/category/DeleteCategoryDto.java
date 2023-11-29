@@ -1,4 +1,4 @@
-package kg.java.todo.core.models.dtos;
+package kg.java.todo.core.models.dtos.category;
 
 import kg.java.todo.core.models.dtos.base.BaseDto;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,5 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class DeleteUserDto extends BaseDto {
-
+public class DeleteCategoryDto extends BaseDto {
 }

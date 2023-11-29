@@ -1,5 +1,6 @@
-package kg.java.todo.core.models.dtos;
+package kg.java.todo.core.models.dtos.category;
 
+import kg.java.todo.core.models.dtos.user.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,10 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
+public class CategoryDto {
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-
+    private String name;
+    private UserDto user;
 }

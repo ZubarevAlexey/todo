@@ -1,8 +1,10 @@
 package kg.java.todo.controllers.v1;
 
+import kg.java.todo.core.contracts.facades.CategoryFacade;
 import kg.java.todo.core.contracts.facades.UserFacade;
 import kg.java.todo.core.exceptions.EntityDuplicateException;
 import kg.java.todo.core.exceptions.EntityNotFoundException;
+import kg.java.todo.core.models.dtos.category.*;
 import kg.java.todo.core.models.dtos.user.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/user")
-public class UserController {
-    private final UserFacade userFacade;
+@RequestMapping("/api/v1/category")
+public class CategoryController {
+    private final CategoryFacade categoryFacade;
 
-    public UserController(UserFacade userFacade) {
-        this.userFacade = userFacade;
+    public CategoryController(CategoryFacade categoryFacade) {
+        this.categoryFacade = categoryFacade;
     }
-    @PostMapping("/signup")
-    public ResponseEntity<UserDto> register(@RequestBody CreateUserDto model){
+
+    @PostMapping("/add")
+    public ResponseEntity<CategoryDto> add(@RequestBody CreateCategoryDto model){
         try {
-            return ResponseEntity.ok(userFacade.register(model));
+            return ResponseEntity.ok(categoryFacade.register(model));
         }catch (EntityDuplicateException e){
             return ResponseEntity.badRequest().build();
         }
@@ -31,9 +34,9 @@ public class UserController {
         }
     }
     @PostMapping("/update")
-    public ResponseEntity<UserDto> update(@RequestBody UpdateUserDto model){
+    public ResponseEntity<CategoryDto> update(@RequestBody UpdateCategoryDto model){
         try {
-            return ResponseEntity.ok(userFacade.update(model));
+            return ResponseEntity.ok(categoryFacade.update(model));
         }catch (EntityNotFoundException e){
             return ResponseEntity.notFound().build();
         }
@@ -42,9 +45,9 @@ public class UserController {
         }
     }
     @PostMapping("/delete")
-    public ResponseEntity<HttpStatus> delete(@RequestBody DeleteUserDto model){
+    public ResponseEntity<HttpStatus> delete(@RequestBody DeleteCategoryDto model){
         try {
-            return ResponseEntity.ok(userFacade.delete(model));
+            return ResponseEntity.ok(categoryFacade.delete(model));
         }catch (EntityNotFoundException e){
             return ResponseEntity.notFound().build();
         }
@@ -53,9 +56,9 @@ public class UserController {
         }
     }
     @PostMapping("/id")
-    public ResponseEntity<UserDto> findById(@RequestBody FindByIdUserDto model){
+    public ResponseEntity<CategoryDto> findById(@RequestBody FindByIdCategoryDto model){
         try {
-            return ResponseEntity.ok(userFacade.findById(model));
+            return ResponseEntity.ok(categoryFacade.findById(model));
         }catch (EntityNotFoundException e){
             return ResponseEntity.notFound().build();
         }
