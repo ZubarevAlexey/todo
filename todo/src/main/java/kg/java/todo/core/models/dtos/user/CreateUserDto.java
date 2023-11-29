@@ -1,6 +1,5 @@
-package kg.java.todo.core.models.dtos;
+package kg.java.todo.core.models.dtos.user;
 
-import kg.java.todo.core.models.dtos.base.BaseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UpdateUserDto extends BaseDto {
+public class CreateUserDto {
     private String firstName;
     private String lastName;
     private String phoneNumber;

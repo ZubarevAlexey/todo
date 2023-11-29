@@ -5,7 +5,7 @@ import kg.java.todo.core.contracts.facades.UserFacade;
 import kg.java.todo.core.contracts.services.UserService;
 import kg.java.todo.core.exceptions.EntityDuplicateException;
 import kg.java.todo.core.exceptions.EntityNotFoundException;
-import kg.java.todo.core.models.dtos.*;
+import kg.java.todo.core.models.dtos.user.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
